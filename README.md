@@ -1,2 +1,2 @@
 # django-flutterwave
-implementing Flautterwave payment gateway with django
+implementing Flutterwave payment gateway with django
