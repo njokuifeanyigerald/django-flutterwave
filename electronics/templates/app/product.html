@@ -1,0 +1,52 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Trade9ja</title>
+
+</head>
+<body>
+    <div class="container ml-5">
+        <div class=" mt-4" style="float:inherit">
+            <img class="thumbnail" src='{{product.image.url}}'>
+            <div class="box-element product">
+                <h4 class="text-muted text-capitalize">{{product.name}}</h4>
+                <hr>
+                <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">
+                    Add To Cart
+                </button>
+                <a class="btn btn-outline-success" href="#" >View</a>
+                <h4 style="display: inline-block;">
+                    &#8358;{{product.price|floatformat:2}}
+                </h4>
+            </div>
+
+        </div>
+        <form method="post" class="mt-4" action=".">
+            {% csrf_token %}
+            <div class="form-group">
+                {{form.name}}
+            </div>
+            <div class="form-group">
+                {{form.email}}
+            </div>
+            <div class="form-group">
+                {{form.phone}}
+            </div>
+            <div class="form-group">
+                {% render_field form.amount class='form-control' placeholder="Amount" %}
+            </div>
+            <button class="btn btn-outline-primary">Submit</button>
+        </form>
+    </div>
+    
+    
+</body>
+</html>
